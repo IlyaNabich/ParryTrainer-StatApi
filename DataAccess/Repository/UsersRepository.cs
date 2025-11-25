@@ -9,7 +9,7 @@ namespace DataAccess.Repository;
 
 public class UsersRepository (ParryTrainerDbContext context) : IUsersRepository
 {
-    public async Task<List<Users>> Get()
+    public async Task<List<Users>> GetAll()
     {
         var userEntities = await context.Users
             .AsNoTracking()
@@ -20,6 +20,17 @@ public class UsersRepository (ParryTrainerDbContext context) : IUsersRepository
         return user;
     }
 
+    public async Task<Users> GetByLogin(string login)
+    {
+        var userEntity = await context.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Login == login);
+        
+        var users = Users.CreateUsers(userEntity.UserId, userEntity.UserName, userEntity.Login, userEntity.Password, userEntity.RegDate, userEntity.LastOnlineDate).user;
+
+        return users;
+    }
+    
     public async Task<Guid> Create(Users users)
     {
         var userEntity = new UsersEntity

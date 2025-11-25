@@ -10,11 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IProfilesRepository, ProfilesRepository>();
 builder.Services.AddScoped<IProfilesService, ProfilesService>();
 builder.Services.AddScoped<IStatsRepository, StatsRepository>();
