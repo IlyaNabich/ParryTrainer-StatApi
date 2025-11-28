@@ -23,6 +23,14 @@ public class UserConfiguration: IEntityTypeConfiguration<UsersEntity>
             .HasForeignKey<ProfilesEntity>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
-
+        builder.Property(x => x.Login)
+            .HasColumnName("Login")
+            .HasMaxLength(60)
+            .IsRequired();
+        
+        builder.Property(x => x.UserName)
+            .HasColumnName("UserName")
+            .HasMaxLength(60)
+            .IsRequired();
     }
 }

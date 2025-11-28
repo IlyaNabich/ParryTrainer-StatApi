@@ -64,7 +64,6 @@ public class UsersController (IUserService userService, IProfilesService profile
         return Ok(users);
     }
     
-    
     [HttpPut]
     public async Task<ActionResult> UpdateUser([FromBody] UsersRequest request, Guid userId)
     {
