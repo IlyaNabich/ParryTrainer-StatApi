@@ -8,7 +8,7 @@ public class ProfilesEntity
     
     public string LastName { get; set; } = "Unknown";
     
-    public string Age { get; set; } = "Unknown";
+    public string Age { get; set; } = string.Empty;
     
     public string Links { get; set; } = "Unknown";
     

@@ -29,8 +29,7 @@ public class UserProfileConfiguration : IEntityTypeConfiguration<ProfilesEntity>
 
         builder
             .Property(x => x.Age)
-            .HasColumnName("Age")
-            .HasMaxLength(3);
+            .HasColumnName("Age");
 
         builder
             .Property(x => x.Country)

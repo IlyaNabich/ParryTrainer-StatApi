@@ -21,7 +21,6 @@ public class UsersController (IUserService userService, IProfilesService profile
         
         return Ok(response);
     }
-
     [HttpPost("Login")]
     public async Task<ActionResult> Login([FromBody]LoginRequest request)
     {
@@ -29,7 +28,6 @@ public class UsersController (IUserService userService, IProfilesService profile
         
         return Ok(token);
     }
-    
     [HttpPost]
     public async Task<ActionResult<UsersResponse>> Register([FromBody] UsersRequest request)
     {
