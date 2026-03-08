@@ -4,6 +4,8 @@ public class ProfilesEntity
 {
     public Guid UserId { get; set; }
     
+    public Guid ProfileId { get; set; }
+    
     public string FirstName { get; set; } = "Unknown";
     
     public string LastName { get; set; } = "Unknown";

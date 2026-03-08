@@ -15,7 +15,7 @@ public class UsersRepository (ParryTrainerDbContext context) : IUsersRepository
             .AsNoTracking()
             .ToListAsync();
         var user = userEntities
-            .Select(x => Users.CreateUsers(x.UserId, x.UserName, x.Login, x.Password, x.RegDate, x.LastOnlineDate).user)
+            .Select(x => Users.CreateUsers(x.UserId, x.UserName, x.Login, x.Password).user)
             .ToList();
         return user;
     }
@@ -26,7 +26,7 @@ public class UsersRepository (ParryTrainerDbContext context) : IUsersRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Login == login);
         
-        var users = Users.CreateUsers(userEntity.UserId, userEntity.UserName, userEntity.Login, userEntity.Password, userEntity.RegDate, userEntity.LastOnlineDate).user;
+        var users = Users.CreateUsers(userEntity.UserId, userEntity.UserName, userEntity.Login, userEntity.Password).user;
 
         return users;
     }

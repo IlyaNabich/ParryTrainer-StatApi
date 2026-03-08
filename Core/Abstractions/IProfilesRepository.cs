@@ -8,6 +8,6 @@ public interface IProfilesRepository
     
     public Task<Guid> CreateUserProfileAsync(Profiles profiles);
     
-    public Task<Profiles> UpdateUserProfileAsync(Profiles profiles);
+    public Task<Guid> UpdateUserProfileAsync(Guid userId, string firstName, string lastName, string age, string links, string region, string country, string description);
     
 }

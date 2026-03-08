@@ -13,8 +13,7 @@ public class ProfilesRepository (ParryTrainerDbContext context): IProfilesReposi
     {
         var userProfileEntity = await context.Profiles.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == userId);
         
-        var userProfile = Profiles.CreateProfile(userProfileEntity.UserId, userProfileEntity.FirstName, userProfileEntity.LastName, userProfileEntity.Age, userProfileEntity.Links,
-            userProfileEntity.Region,  userProfileEntity.Country, userProfileEntity.Description);
+        var userProfile = Profiles.CreateProfile(userProfileEntity.UserId);
         
         return userProfile;
     }
@@ -39,19 +38,19 @@ public class ProfilesRepository (ParryTrainerDbContext context): IProfilesReposi
         return profiles.UserId;
     }
 
-    public async Task<Profiles> UpdateUserProfileAsync(Profiles profiles)
+    public async Task<Guid> UpdateUserProfileAsync(Guid userId, string firstName, string lastName, string age, string links, string region, string country, string description)
     {
         await context.Profiles
-            .Where(x => x.UserId == profiles.UserId)
+            .Where(x => x.UserId == userId)
             .ExecuteUpdateAsync(x => x
-                .SetProperty(a => a.FirstName, profiles.FirstName)
-                .SetProperty(b => b.LastName, profiles.LastName)
-                .SetProperty(d => d.Age, profiles.Age)
-                .SetProperty(e => e.Links, profiles.Links)
-                .SetProperty(f => f.Region, profiles.Region)
-                .SetProperty(g => g.Country, profiles.Country)
-                .SetProperty(h => h.Description, profiles.Description));
+                .SetProperty(a => a.FirstName, firstName)
+                .SetProperty(b => b.LastName, lastName)
+                .SetProperty(d => d.Age, age)
+                .SetProperty(e => e.Links, links)
+                .SetProperty(f => f.Region, region)
+                .SetProperty(g => g.Country, country)
+                .SetProperty(h => h.Description, description));
         
-        return profiles;
+        return userId;
     }
 }

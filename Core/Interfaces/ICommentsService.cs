@@ -1,8 +1,8 @@
 ﻿using Core.Models;
 
-namespace Core.Abstractions;
+namespace Core.Interfaces;
 
-public interface ICommentsRepository
+public interface ICommentsService
 {
     public Task<List<Comments>> Get(Guid profileId);
     

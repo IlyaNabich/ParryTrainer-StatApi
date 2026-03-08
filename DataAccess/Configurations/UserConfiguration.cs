@@ -22,6 +22,8 @@ public class UserConfiguration: IEntityTypeConfiguration<UsersEntity>
             .WithOne(x => x.UsersEntity)
             .HasForeignKey<ProfilesEntity>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+            
 
         builder.Property(x => x.Login)
             .HasColumnName("Login")

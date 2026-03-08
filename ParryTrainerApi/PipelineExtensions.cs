@@ -53,7 +53,8 @@ public static class PipelineExtensions
             return services
                 .AddScoped<IProfilesRepository, ProfilesRepository>()
                 .AddScoped<IStatsRepository, StatsRepository>()
-                .AddScoped<IUsersRepository, UsersRepository>();
+                .AddScoped<IUsersRepository, UsersRepository>()
+                .AddScoped<ICommentsRepository, CommentsRepository>();
         }
 
         private IServiceCollection AddServices()
@@ -61,7 +62,8 @@ public static class PipelineExtensions
             return services
                 .AddScoped<IProfilesService, ProfilesService>()
                 .AddScoped<IStatsService, StatsService>()
-                .AddScoped<IUserService, UsersService>();
+                .AddScoped<IUserService, UsersService>()
+                .AddScoped<ICommentsService, CommentsService>();
         }
 
         private IServiceCollection AddProviders()

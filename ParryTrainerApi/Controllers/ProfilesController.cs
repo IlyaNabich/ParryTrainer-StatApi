@@ -23,18 +23,8 @@ public class ProfilesController (IProfilesService profilesService) : ControllerB
     [HttpPut]
     public async Task<ActionResult<ProfilesResponse>> UpdateProfile([FromBody] ProfilesRequest request)
     {
-        var profileEntity = Profiles.CreateProfile(
-            request.userId,
-            request.firstName,
-            request.lastName,
-            request.age,
-            request.links,
-            request.region,
-            request.country,
-            request.description
-            );
         
-        var profile =  await profilesService.UpdateUserProfileAsync(profileEntity);
+        var profile =  await profilesService.UpdateUserProfileAsync(request.userId, request.firstName,  request.lastName, request.age, request.links, request.region, request.country, request.description);
         
         return Ok(profile);
     }

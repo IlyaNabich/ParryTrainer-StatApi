@@ -3,7 +3,7 @@ using System.Reflection.Metadata;
 
 namespace Core.Validations;
 
-public class Validation
+public static class UsersValidation
 {
     // ReSharper disable once InconsistentNaming
     private const int MAX_LOGIN_LENGTH = 30;

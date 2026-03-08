@@ -6,14 +6,14 @@ namespace Core.Models;
 
 public class Users
 {
-    private Users(Guid userId, string userName, string login, string password, DateTime regDate, DateTime lastOnlineDate)
+    private Users(Guid userId, string userName, string login, string password)
     {
         UserId = userId;
         UserName = userName;
         Login = login;
         Password = password;
-        RegDate = regDate;
-        LastOnlineDate = lastOnlineDate;
+        RegDate = DateTime.UtcNow;
+        LastOnlineDate = DateTime.UtcNow;
     }
     
     public Guid UserId { get; }
@@ -28,10 +28,11 @@ public class Users
     
     public DateTime LastOnlineDate { get; }
 
-    public static (Users user, string Error) CreateUsers(Guid userId, string userName, string login, string password,  DateTime regDate, DateTime lastOnlineDate)
+    public static (Users user, string Error) CreateUsers(Guid userId, string userName, string login, string password)
     {
-        var error = Validation.UserValidate(login, password, userName);
-        var user = new Users(userId, userName, login, password, regDate, lastOnlineDate);
+        var error = UsersValidation.UserValidate(login, password, userName);
+        var user = new Users(userId, userName, login, password);
+        
         return (user,error);
     }
 }

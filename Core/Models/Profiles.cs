@@ -2,37 +2,32 @@
 
 public class Profiles
 {
-    private Profiles(Guid userId, string firstName, string lastName, string age, string links, string region, string country, string description)
+    private Profiles(Guid userId)
     {
         UserId = userId;
-        FirstName = firstName;
-        LastName = lastName;
-        Age = age;
-        Links = links;
-        Region = region;
-        Country = country;
-        Description = description;
+        ProfileId = Guid.NewGuid();
     }
     public Guid UserId { get; } 
     
-    public string FirstName { get; }
+    public Guid ProfileId { get; }
     
-    public string LastName { get; }
+    public string FirstName { get; } = "Unknown";
     
-    public string Age { get; }
+    public string LastName { get; } = "Unknown";
     
-    public string Links { get; }
+    public string Age { get; } = "Unknown";
     
-    public string Region { get; }
+    public string Links { get; } = "Unknown";
     
-    public string Country { get; }
+    public string Region { get; } = "Unknown";
     
-    public string Description {  get; }
+    public string Country { get; } = "Unknown";
+    
+    public string Description {  get; } = "Unknown";
 
-    public static Profiles CreateProfile(Guid userId, string firstName, string lastName, 
-        string age, string links, string region, string country, string description)
+    public static Profiles CreateProfile(Guid userId)
     {
-       return new Profiles(userId,  firstName, lastName, age, links, region, country, description);
+       return new Profiles(userId);
     }
     
 }

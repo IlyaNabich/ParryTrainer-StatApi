@@ -9,12 +9,12 @@ public class UserProfileConfiguration : IEntityTypeConfiguration<ProfilesEntity>
     public void Configure(EntityTypeBuilder<ProfilesEntity> builder)
     {
         builder
-            .HasKey(x => x.UserId);
+            .HasKey(x => x.ProfileId);
         
         builder
             .HasMany(x => x.CommentsEntity)
             .WithOne(x => x.ProfilesEntity)
-            .HasForeignKey(x => x.UserId)
+            .HasForeignKey(x => x.ProfileId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder

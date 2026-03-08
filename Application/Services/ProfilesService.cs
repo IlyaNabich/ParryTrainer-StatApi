@@ -15,7 +15,7 @@ public class ProfilesService (IProfilesRepository profilesRepository) : IProfile
         await profilesRepository.CreateUserProfileAsync(profiles);
     
 
-    public async Task<Profiles> UpdateUserProfileAsync(Profiles profiles) =>
-         await profilesRepository.UpdateUserProfileAsync(profiles);
+    public async Task<Guid> UpdateUserProfileAsync(Guid userId, string firstName, string lastName, string age, string links, string region, string country, string description) =>
+         await profilesRepository.UpdateUserProfileAsync(userId, firstName, lastName, age, links, region, country, description);
     
 }

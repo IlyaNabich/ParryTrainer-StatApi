@@ -28,7 +28,7 @@ public class UsersController (IUserService userService, IProfilesService profile
         
         return Ok(token);
     }
-    [HttpPost]
+    [HttpPost("Register")]
     public async Task<ActionResult<UsersResponse>> Register([FromBody] UsersRequest request)
     {
         var id = Guid.NewGuid();
@@ -36,20 +36,9 @@ public class UsersController (IUserService userService, IProfilesService profile
             id,
             request.Username,
             request.Login,
-            passwordHasher.Generate(request.Password),
-            DateTime.UtcNow, 
-            DateTime.UtcNow
+            passwordHasher.Generate(request.Password)
             );
-        var profile = Profiles.CreateProfile(
-            id,
-            "Unknown",
-            "Unknown",
-            "Unknown",
-            "Unknown",
-            "Unknown",
-            "Unknown",
-            "Unknown"
-        );
+        var profile = Profiles.CreateProfile(id);
         var stat = Stats.CreateStats(id);
         if (string.IsNullOrEmpty(error))
         {
