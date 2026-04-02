@@ -38,7 +38,7 @@ public class UsersController (IUserService userService, IProfilesService profile
             request.Login,
             passwordHasher.Generate(request.Password)
             );
-        var profile = Profiles.CreateProfile(id);
+        var profile = Profiles.CreateProfile(id, Guid.NewGuid());
         var stat = Stats.CreateStats(id);
         if (string.IsNullOrEmpty(error))
         {

@@ -13,7 +13,7 @@ public class ProfilesRepository (ParryTrainerDbContext context): IProfilesReposi
     {
         var userProfileEntity = await context.Profiles.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == userId);
         
-        var userProfile = Profiles.CreateProfile(userProfileEntity.UserId);
+        var userProfile = Profiles.CreateProfile(userProfileEntity.UserId,  userProfileEntity.ProfileId);
         
         return userProfile;
     }

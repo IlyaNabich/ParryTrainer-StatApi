@@ -2,11 +2,12 @@
 
 public class Profiles
 {
-    private Profiles(Guid userId)
+    private Profiles(Guid userId, Guid profileId)
     {
         UserId = userId;
-        ProfileId = Guid.NewGuid();
+        ProfileId = profileId;
     }
+
     public Guid UserId { get; } 
     
     public Guid ProfileId { get; }
@@ -25,9 +26,9 @@ public class Profiles
     
     public string Description {  get; } = "Unknown";
 
-    public static Profiles CreateProfile(Guid userId)
+    public static Profiles CreateProfile(Guid userId, Guid profileId)
     {
-       return new Profiles(userId);
+       return new Profiles(userId, profileId);
     }
     
 }
