@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.Configurations;
 
-public class UserStatConfiguration : IEntityTypeConfiguration<StatsEntity>
+public class StatsConfiguration : IEntityTypeConfiguration<StatsEntity>
 {
     public void Configure(EntityTypeBuilder<StatsEntity> builder)
     {

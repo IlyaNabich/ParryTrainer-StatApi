@@ -6,7 +6,7 @@ public interface IStatsService
 {
     public Task<Stats> GetUserStats(Guid userId);
 
-    public Task<Guid> CreateUserStats(Stats stats);
+    public Task<Guid> CreateStats(Stats stats);
     
     public Task<Guid> UpdateUserStats(Guid userId, Stats stats);
     

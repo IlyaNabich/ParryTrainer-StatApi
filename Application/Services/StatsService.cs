@@ -11,7 +11,7 @@ public class StatsService (IStatsRepository statsRepository) : IStatsService
         await statsRepository.Get(userId);
     
 
-    public async Task<Guid> CreateUserStats(Stats stats) =>
+    public async Task<Guid> CreateStats(Stats stats) =>
         await statsRepository.Create(stats);
     
 

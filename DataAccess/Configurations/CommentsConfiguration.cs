@@ -8,7 +8,11 @@ public class CommentsConfiguration : IEntityTypeConfiguration<CommentsEntity>
 {
     public void Configure(EntityTypeBuilder<CommentsEntity> builder)
     {
-        builder.HasKey(x => x.ProfileId);
+        builder.HasKey(x => x.CommentId);
+        
+        builder.Property(x => x.CommentId)
+            .ValueGeneratedOnAdd(); 
+        
+        builder.HasIndex(x => x.ProfileId);
     }
-    
 }

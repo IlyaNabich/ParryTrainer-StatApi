@@ -26,10 +26,10 @@ public class Comments
         DateCreated = DateTime.UtcNow;
     }
 
-    public static (Comments comments, string error) CreateComments(Guid userId, Guid profileId, int commentId, string username, string text)
+    public static (Comments comments, string error) CreateComments(Guid userId, Guid profileId, int commentsId, string username, string text)
     {
         var error = CommentsValidation.CommentValidate(text);
-        var comments = new Comments(userId, profileId, commentId, username, text);
+        var comments = new Comments(userId, profileId, commentsId, username, text);
         
         return (comments, error);
     }

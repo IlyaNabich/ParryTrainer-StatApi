@@ -22,5 +22,5 @@ public class ProfilesEntity
     
     public UsersEntity UsersEntity { get; set; }
     
-    public List<CommentsEntity> CommentsEntity { get; set; }
+    public List<CommentsEntity> CommentsEntity { get; set; } = null!;
 }

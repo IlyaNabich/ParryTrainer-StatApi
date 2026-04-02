@@ -46,8 +46,8 @@ public class UsersController (IUserService userService, IProfilesService profile
         }
 
         var users = await userService.Register(user);
-        await statsService.CreateUserStats(stat);
-        await profilesService.CreateUserProfileAsync(profile);
+        await statsService.CreateStats(stat);
+        await profilesService.CreateProfileAsync(profile);
         return Ok(users);
     }
     

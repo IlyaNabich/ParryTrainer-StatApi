@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.Configurations;
 
-public class UserProfileConfiguration : IEntityTypeConfiguration<ProfilesEntity>
+public class ProfilesConfiguration : IEntityTypeConfiguration<ProfilesEntity>
 {
     public void Configure(EntityTypeBuilder<ProfilesEntity> builder)
     {

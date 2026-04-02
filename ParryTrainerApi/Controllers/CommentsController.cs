@@ -22,9 +22,9 @@ public class CommentsController (ICommentsService commentsService) : ControllerB
     [HttpPost]
     public async Task<ActionResult<CommentsResponse>> Post([FromBody] CommentsRequest request)
     {
-        var (comment, error) = Comments.CreateComments(request.UserId, request.ProfileId, request.CommentId, request.Username,
+        var (comment, error) = Comments.CreateComments(request.UserId, request.ProfileId, 0,request.Username,
             request.Text);
-        if (string.IsNullOrEmpty(error))
+        if (!string.IsNullOrEmpty(error))
         {
             return BadRequest(error);
         }
@@ -34,9 +34,9 @@ public class CommentsController (ICommentsService commentsService) : ControllerB
     }
 
     [HttpDelete]
-    public async Task<ActionResult<Guid>> Delete([FromBody] CommentsRequest request)
+    public async Task<ActionResult<Guid>> Delete(Guid profileId, int commentId)
     {
-        await commentsService.Delete(request.ProfileId, request.CommentId);
+        await commentsService.Delete(profileId, commentId);
         return Ok();
     }
 }

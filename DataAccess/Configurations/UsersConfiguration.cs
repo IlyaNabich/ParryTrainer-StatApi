@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.Configurations;
 
-public class UserConfiguration: IEntityTypeConfiguration<UsersEntity>
+public class UsersConfiguration: IEntityTypeConfiguration<UsersEntity>
 {
     public void Configure(EntityTypeBuilder<UsersEntity> builder)
     {
@@ -22,7 +22,6 @@ public class UserConfiguration: IEntityTypeConfiguration<UsersEntity>
             .WithOne(x => x.UsersEntity)
             .HasForeignKey<ProfilesEntity>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade);
-        
             
 
         builder.Property(x => x.Login)

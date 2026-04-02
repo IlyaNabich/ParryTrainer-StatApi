@@ -13,7 +13,7 @@ public class CommentsRepository(ParryTrainerDbContext context) : ICommentsReposi
             .AsNoTracking()
             .ToListAsync();
 
-        var comments = commentsEntity.Select(x => Comments.CreateComments(x.UserId, x.ProfileId, x.CommentId,
+        var comments = commentsEntity.Select(x => Comments.CreateComments(x.UserId, x.ProfileId,x.CommentId, 
             x.Username, x.Text).comments).ToList();
         
         return comments;
