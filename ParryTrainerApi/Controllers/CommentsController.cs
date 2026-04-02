@@ -12,13 +12,11 @@ namespace ParryTrainerApi.Controllers;
 public class CommentsController (ICommentsService commentsService) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<CommentsResponse>> Get([FromBody] CommentsRequest request)
+    public async Task<ActionResult<CommentsResponse>> Get(Guid profileId)
     {
-        var comments = await commentsService.Get(request.ProfileId);
-
-        var response = comments.Select(x => new CommentsResponse(request.Text, request.Username, request.DateCreated));
+        var comments = await commentsService.Get(profileId);
         
-        return Ok(response);
+        return Ok(comments);
     }
 
     [HttpPost]
